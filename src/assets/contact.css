@@ -1,0 +1,13 @@
+.contacto-general{
+    padding: 15px;
+}
+
+.contacto-general__block{
+    padding: 15px;
+    border: 1px solid gray;
+    margin-bottom: 15px;
+}
+
+.formularioCont.hidden{
+    display: none;
+}
