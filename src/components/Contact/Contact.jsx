@@ -1,41 +1,41 @@
+import { useEffect, useState } from 'react'
+
 import '../../assets/contact.css'
 
 import ContactList from "./ContactList"
-import Search from "../Search/Search"
-import ContactForm from "./ContactForm"
+import FormNewContact from './FormNewContact'
 
 const Contact = () => {
 
-    const contactos = [
-    {
-      name: "Henry Jones",
-      email: "henry@gmail.com",
-      phone: "987464134"
-    },
-    {
-      name: "Sallah",
-      email: "sallah@gmail.com",
-      phone: "666666666"
-    },
-    {
-      name: "Marcus Brody",
-      email: "marcus@gmail.com",
-      phone: "951753258"
-    }
-  ]
+    // Creo estado contactos vacio
+    const [contacts, setContacts] = useState([])
+
+    useEffect(() => {
+      // Traer datos desde API
+      fetch("https://jsonplaceholder.typicode.com/users") //traigo datos desde API
+        .then(response => response.json()) // parseo datos
+        .then(data => {
+          const dataFmted = data.map(person => { //recorro array datos de API y devuelvo los campos que me ineteresan
+            return {
+              name: person.name,
+              email: person.email,
+              phone: person.phone 
+            }
+          })
+          setContacts(dataFmted) //modifico array contactos vacio
+        })
+  
+    }, []) // en la declaración lso corchetes evitan que se reproduzca infinitamente
+
+    
 
     return(
         <div className="contacto-general">
-            <div className="contacto-general__block">
-                
-                <Search />
+            <div className="contacto-general__block contacto-general__search">
+                <FormNewContact dataContacts={{contacts, setContacts}}/>
             </div>
             <div className="contacto-general__block">
-                <ContactForm/>
-            </div>
-            <div className="contacto-general__block">
-                
-                <ContactList contactos={contactos}/>
+                <ContactList dataContacts={{contacts, setContacts}}/>
             </div>
         </div>
     )

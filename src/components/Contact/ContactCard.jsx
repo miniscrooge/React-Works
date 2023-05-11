@@ -1,16 +1,49 @@
+import { useState } from "react";
 
-const ContactCard = (props) => {
+const ContactCard = ({dataContacts,contact}) => {
+
+
+    const removeContact = (name) => {
+       const contactRemoved = dataContacts
+                            .contacts
+                            .filter(contact => contact.name !== name)
+                            .map(person => { //recorro array datos de API y devuelvo los campos que me ineteresan
+                                return {
+                                  name: person.name,
+                                  email: person.email,
+                                  phone: person.phone 
+                                }
+                            })
+       dataContacts.setContacts(contactRemoved)
+    }
+    
+    const SeeMoreData = (name) => {
+        const contactRemoved = dataContacts
+                             .contacts
+                             .filter(contact => contact.name === name)
+                             .map(person => { //recorro array datos de API y devuelvo los campos que me ineteresan
+                                 return {
+                                   name: person.name,
+                                   email: person.email,
+                                   phone: person.phone 
+                                 }
+                             })
+     }
+   
 
     return(
-        props.contactos.map((contacto, index) =>
-            <li key={index}>
-                <div className="card card--contact">
-                    <h3>{contacto.name}</h3>
-                    <p>{contacto.email}</p>
-                    <p>{contacto.phone}</p>
-                </div>
-            </li>
-        )
+        <li>
+            <div className="card card--contact">
+                <h3>{contact.name}</h3>
+                <p>{contact.email}</p>
+                <p>{contact.phone}</p>
+                <p className="card__ctas">
+                    <button>Ver más</button>
+                    <button>Editar</button>
+                    <button onClick={() => removeContact(contact.name)}>Borrar</button>
+                </p>
+            </div>
+        </li>
     )
 }
 

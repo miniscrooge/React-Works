@@ -3,11 +3,45 @@
 }
 
 .contacto-general__block{
-    padding: 15px;
-    border: 1px solid gray;
+    padding: 30px 0;
+    border-bottom: 1px solid gray;
     margin-bottom: 15px;
+}
+
+.contacto-general__search{
+    display: flex;
+    justify-content: space-around;
 }
 
 .formularioCont.hidden{
     display: none;
+}
+
+.list{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+    list-style-type: none;
+    padding-left: 0;
+}
+.list li{
+    flex: 0 0 32%;
+    margin-bottom: 2%;
+}
+.card{
+    padding: 10px;
+    border: 1px solid gray;
+    
+}
+.card__ctas{
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 2rem;
+}
+.card__ctas button{
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 5px;
 }
