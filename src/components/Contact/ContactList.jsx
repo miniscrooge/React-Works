@@ -9,7 +9,7 @@ import LightContext from '../../contexts/LightContext'
 const ContactList = () => {
 
     //consumir context (pasar datos independien)
-    const dataContacts = useContext(AddContactsContext)
+    const {contacts, loadingContacts, errorContacts} = useContext(AddContactsContext)
     const dataLight = useContext(LightContext)
 
     
@@ -28,8 +28,15 @@ const ContactList = () => {
             </div>
             <ul className="list list--cards">
                 {
-                    dataContacts
-                        .contacts
+                    errorContacts
+                    ?
+                    <p>Ha habido un error</p> // muestro ERROR si no han llegado los datos
+                    :
+                    loadingContacts //Si es true no ha terminado de cargar y mantengo el CARGANDO
+                    ? 
+                    <p>Cargando...</p>
+                    : //Si es false ya ha terminado de cargar y MOSTRAMOS LOS DATOS
+                    contacts
                         .filter(contact =>
                             contact.name.length > 0 &&
                             contact.name.startsWith(search)
@@ -37,6 +44,7 @@ const ContactList = () => {
                         .map((contact, index) =>
                         <ContactCard contact={contact} key={index}/>
                     )
+                    
                 }
             </ul>
         </div>

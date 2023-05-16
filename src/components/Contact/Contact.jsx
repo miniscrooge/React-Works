@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
+import useFetch from "../../hooks/useFetch"
 
 import '../../assets/contact.css'
 
@@ -11,36 +12,25 @@ import LightContext from '../../contexts/LightContext';
 
 const Contact = () => {
 
-    // Creo estado contactos vacio
-    const [contacts, setContacts] = useState([])
-
+    // 
+    // cambio theme
     const [theme, setTheme] = useState("light-theme")
     const [toogleCopyIcon, setToggle] = useState("nightlight")
-
+    
     const toogleTheme = () =>{
       theme === 'dark-theme' ? setTheme('light-theme') : setTheme('dark-theme')
       toogleCopyIcon === 'nightlight' ? setToggle('light_mode') : setToggle('nightlight')
     }
 
-
-    useEffect(() => {
-      // Traer datos desde API
-      fetch("https://jsonplaceholder.typicode.com/users") //traigo datos desde API
-        .then(response => response.json()) // parseo datos
-        .then(data => {
-          const dataFmted = data.map(person => { //recorro array datos de API y devuelvo los campos que me ineteresan
-            return {
-              name: person.name,
-              email: person.email,
-              phone: person.phone 
-            }
-          })
-          setContacts(dataFmted) //modifico array contactos vacio
-        })
+    //initialize data
   
-    }, []) // en la declaración lso corchetes evitan que se reproduzca infinitamente
-
-    
+    // Retrieve data
+    const [
+      contacts,
+      setContacts,
+      loadingContacts,
+      errorContacts
+    ] = useFetch("https://jsonplaceholder.typicode.com/users")
 
     return(
       <LightContext.Provider value={theme}>
@@ -54,7 +44,7 @@ const Contact = () => {
           <div className="contacto-general">
               <div className="contacto-general__block">
                 {/* Pasando datos por Context */}
-                <AddContactssContext.Provider value={{contacts,setContacts}}>
+                <AddContactssContext.Provider value={{contacts,setContacts,loadingContacts, errorContacts}}>
                   <ContactList/>
                 </AddContactssContext.Provider>
               </div>
