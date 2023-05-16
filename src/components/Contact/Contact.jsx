@@ -2,13 +2,26 @@ import { useEffect, useState } from 'react'
 
 import '../../assets/contact.css'
 
+
 import ContactList from "./ContactList"
 import FormNewContact from './FormNewContact'
+
+import AddContactssContext from '../../contexts/AddContactsContext'
+import LightContext from '../../contexts/LightContext';
 
 const Contact = () => {
 
     // Creo estado contactos vacio
     const [contacts, setContacts] = useState([])
+
+    const [theme, setTheme] = useState("light-theme")
+    const [toogleCopyIcon, setToggle] = useState("nightlight")
+
+    const toogleTheme = () =>{
+      theme === 'dark-theme' ? setTheme('light-theme') : setTheme('dark-theme')
+      toogleCopyIcon === 'nightlight' ? setToggle('light_mode') : setToggle('nightlight')
+    }
+
 
     useEffect(() => {
       // Traer datos desde API
@@ -30,14 +43,28 @@ const Contact = () => {
     
 
     return(
-        <div className="contacto-general">
-            <div className="contacto-general__block contacto-general__search">
-                <FormNewContact dataContacts={{contacts, setContacts}}/>
-            </div>
-            <div className="contacto-general__block">
-                <ContactList dataContacts={{contacts, setContacts}}/>
-            </div>
-        </div>
+      <LightContext.Provider value={theme}>
+        <main className={theme}>
+          <header className={theme}>
+            <h1>React Works</h1>
+            <button onClick={toogleTheme}>
+              <span className="material-icons">{toogleCopyIcon}</span>
+            </button>
+          </header>
+          <div className="contacto-general">
+              <div className="contacto-general__block">
+                {/* Pasando datos por Context */}
+                <AddContactssContext.Provider value={{contacts,setContacts}}>
+                  <ContactList/>
+                </AddContactssContext.Provider>
+              </div>
+              <div className="contacto-general__block contacto-general__search">
+                  {/* Pasando datos por prop */}
+                  <FormNewContact dataContacts={{contacts, setContacts}}/>
+              </div>
+          </div>
+        </main>
+      </LightContext.Provider>
     )
 }
 

@@ -1,11 +1,13 @@
-import { useState } from "react"
-
+import { useState,useContext } from "react"
+import LightContext from "../../contexts/LightContext";
 
 const FormNewContact = ({dataContacts}) => {
 
     const [name,setName] = useState("");
     const [email,setEmail] = useState("");
     const [phone,setPhone] = useState("");
+
+    const dataLight = useContext(LightContext)
 
     const addContact = () =>
     dataContacts.setContacts([...dataContacts.contacts, { name, email, phone }])
@@ -16,14 +18,16 @@ const FormNewContact = ({dataContacts}) => {
 
 
     return(
-        <div>
+        <div className={dataLight}>
             <h2>Nuevo contacto</h2>
-            <div>
-                <p>Nombre: <input type="text" onChange={handlerName} /></p>
-                <p>Email: <input type="text" onChange={handlerEmail} /></p>
-                <p>Teléfono: <input type="text" onChange={handlerPhone} /></p>
+            <div className="form">
+                <div>
+                    <p>Nombre: <input type="text" onChange={handlerName} /></p>
+                    <p>Email: <input type="text" onChange={handlerEmail} /></p>
+                    <p>Teléfono: <input type="text" onChange={handlerPhone} /></p>
+                </div>
+                <button onClick={addContact}>Añadir nuevo</button>
             </div>
-            <button onClick={addContact}>Añadir nuevo</button>
         </div>
     )
 }

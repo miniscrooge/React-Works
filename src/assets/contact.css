@@ -1,16 +1,85 @@
+
+main.dark-theme{
+    background-color: #333;
+}
+
+.list li.dark-theme .card{
+    color: #f2f2f2;
+    background-color: #333;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+.dark-theme .form{
+    color: #f2f2f2;
+    background-color: #333;
+    border: 1px solid white;
+    border-radius: 3px;
+}
+
+header{
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header h1{
+    margin: 0;
+}
+header.dark-theme h1{
+    margin: 0;
+}
+header.dark-theme{
+    color: white;
+    background-color: #333;
+}
+header button .material-icons{
+    color: #333;
+}
+header.dark-theme button .material-icons{
+    color: white;
+}
+
+header button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+main{
+    min-height: 100vh;
+}
+
+h2{
+    margin-top: 0;
+}
+
+.dark-theme h2{
+    color: white;
+}
+
+
 .contacto-general{
     padding: 15px;
+    display: flex;
 }
 
 .contacto-general__block{
-    padding: 30px 0;
-    border-bottom: 1px solid gray;
     margin-bottom: 15px;
+    flex: 3;
+}
+
+.dark-theme .contacto-general__search{
+    border-color: white;
 }
 
 .contacto-general__search{
-    display: flex;
-    justify-content: space-around;
+    flex: 1;
+    border-left: 1px solid;
+    padding-left: 15px;
 }
 
 .formularioCont.hidden{
@@ -18,30 +87,79 @@
 }
 
 .list{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 15px;
+    column-gap: 15px;
     list-style-type: none;
+    padding-right: 15px;
     padding-left: 0;
 }
 .list li{
-    flex: 0 0 32%;
-    margin-bottom: 2%;
+    flex: 0 0 24%;
+    margin-bottom: 1%;
 }
+.list li .card{
+    background-color: #f2f2f2;
+    color: #333;
+}
+
+
+.form{
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 24px;
+}
+.form button{
+    background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin: 0;
+}
+
 .card{
-    padding: 10px;
-    border: 1px solid gray;
-    
+    padding: 24px;
+}
+.card h3{
+    margin-top: 0;
 }
 .card__ctas{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     gap: 10px;
-    margin-top: 2rem;
+    margin: 0;
 }
 .card__ctas button{
     background-color: cadetblue;
     border: none;
     color: white;
-    padding: 5px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    margin: 0;
+    cursor: pointer;
 }
+
+.search-bar input{
+    border: none;
+    padding: 10px 15px;
+    background-color: #f2f2f2;
+    color: #333;
+    width: 100%;
+    max-width: 400px;
+}
+.form input{
+    border: none;
+    padding: 10px 15px;
+    background-color: #fff;
+    color: #333;
+    width:-webkit-fill-available;
+}
+/* .dark-theme .search-bar input{
+    color: #fff;
+    background-color: #333;
+}
+.dark-theme .search-bar input::placeholder{
+    color: #fff;
+} */

@@ -1,8 +1,16 @@
 import { useState } from "react";
 import ContactCard from "./ContactCard"
 
+import { useContext } from "react";
 
-const ContactList = ({dataContacts}) => {
+import AddContactsContext from '../../contexts/AddContactsContext'
+import LightContext from '../../contexts/LightContext'
+
+const ContactList = () => {
+
+    //consumir context (pasar datos independien)
+    const dataContacts = useContext(AddContactsContext)
+    const dataLight = useContext(LightContext)
 
     
     const [search, setSearch] = useState("")
@@ -13,12 +21,11 @@ const ContactList = ({dataContacts}) => {
     };
 
     return(
-        <div>
-            <h2>Buscar</h2>
+        <div className={dataLight}>
+            <h2>Contactos</h2>
             <div className="search-bar">
                 <input placeholder="Introduce los términos de búsqueda" onChange={handleChange} />
             </div>
-            <h2>Contactos</h2>
             <ul className="list list--cards">
                 {
                     dataContacts
@@ -28,7 +35,7 @@ const ContactList = ({dataContacts}) => {
                             contact.name.startsWith(search)
                         )
                         .map((contact, index) =>
-                        <ContactCard dataContacts={dataContacts} contact={contact} key={index}/>
+                        <ContactCard contact={contact} key={index}/>
                     )
                 }
             </ul>
