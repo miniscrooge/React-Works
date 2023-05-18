@@ -102,7 +102,7 @@ h2{
     gap: 10px;
     margin: 0;
 }
-.card__ctas button{
+.card__ctas button,.btn{
     background-color: cadetblue;
     border: none;
     color: white;
@@ -110,6 +110,7 @@ h2{
     border-radius: 3px;
     margin: 0;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .search-bar input{
@@ -161,4 +162,12 @@ h2{
 }
 .text-center{
     text-align: center;
+}
+
+.myDetail{
+    background-color: #f2f2f2;
+    color: #333;
+    padding: 24px;
+    max-width: 400px;
+    margin: 0 auto 1rem;
 }

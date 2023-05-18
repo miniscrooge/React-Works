@@ -14,7 +14,7 @@ const ContactList = () => {
     const {contacts, loadingContacts, errorContacts} = useContext(AddContactsContext)
     const dataLight = useContext(LightContext)
 
-    
+    console.log(contacts)
     const [search, setSearch] = useState("")
 
     const handleChange = event => {

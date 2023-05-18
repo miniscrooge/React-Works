@@ -35,7 +35,7 @@ const ContactCard = ({contact}) => {
                 <p className="card__ctas">
                     {/* <button>Ver más</button>
                     <button>Editar</button> */}
-                    <Link to={"/contact/" + contact.id}>Ver detalle</Link>
+                    <Link to={"/contact/" + contact.id} className="btn">Ver detalle</Link>
                     <button onClick={() => removeContact(contact.name)}>Borrar</button>
                 </p>
             </div>

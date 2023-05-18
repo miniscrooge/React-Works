@@ -1,5 +1,7 @@
-// import { useState, useContext } from 'react';
-// import LightContext from '../contexts/LightContext'
+
+import { useState, useContext } from 'react';
+
+import LightContext from '../contexts/LightContext';
 
 import '../assets/header.css'
 
@@ -7,10 +9,9 @@ import Menu from "./Menu"
 
 const Header = () => {
 
-    // cambio theme
-    
+    //cambio theme
     // const [{theme, setTheme}] = useContext(LightContext)
-    // const [toogleCopyIcon, setToggle] = useState("nightlight")
+    // const [{toogleCopyIcon, setToggle}] = useState("nightlight")
     
     // const toogleTheme = () =>{
     //   theme === 'dark-theme' ? setTheme('light-theme') : setTheme('dark-theme')

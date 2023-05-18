@@ -6,8 +6,7 @@ const Menu = () => {
         <nav>
             <ul>
                 <li><Link to="/">Inicio</Link></li>
-                <li><Link to="contact">Contacto</Link></li>
-                <li><Link to="contact/8958">Detalle contacto</Link></li>
+                <li><Link to="contact">Contactos</Link></li>
             </ul>
         </nav>
     )

@@ -1,12 +1,39 @@
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import AddContactsContext from '../../contexts/AddContactsContext';
 
-const ContactDetail = ({dataContacts}) =>{
+const ContactDetail = () =>{
     const{id} = useParams()
+    const {contacts, loadingContacts, errorContacts} = useContext(AddContactsContext)
+    console.log(contacts)
 
+    return(
+        <div>
+            {
+                    contacts
+                    .filter(contact => contact.id == id)
+                    .map((contact, index) =>
+                         <div key={index}>
+                            <div className="myDetail">
+                                <div>
+                                    <h1>{contact.name}</h1>
+                                    <p>{contact.email}</p>
+                                    <p>{contact.phone}</p>
+                                </div>
+                            </div>
+                            <div className="text-center">
+                                <Link to='/contact'>Volver</Link>
+                            </div>
+                        </div>
+                    )
+
+            }
+        </div>
+    )
     //const user
     
-    console.log(id)
-    console.log(dataContacts)
+    //console.log(id)
     // let detail = null;
 
     // const dataDetail = () => {
@@ -15,29 +42,8 @@ const ContactDetail = ({dataContacts}) =>{
     //                     .map((contact, index) =>
     //                     <ContactCard contact={contact} key={index}/>)
     // }
-
-    return(
-        <div className="myDetail">
-            {
-                dataContacts
-                .map((contact, index) =>
-                <div>
-                        <h1>{contact.name}</h1>
-                        <p>{contact.email}</p>
-                        <p>{contact.phone}</p>
-                    </div>
-                )
-                
-                // .filter(el => {
-                //     return el.id === id
-                // })
-                
-                //.filter(contact.id === id)
-                
-            }
-           
-        </div>
-    )
+        
 }
-
-export default ContactDetail
+        
+        export default ContactDetail
+       
