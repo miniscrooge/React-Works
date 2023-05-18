@@ -1,7 +1,12 @@
+import '../../assets/home.css'
+import WelcomeLogo from '../../assets/img/Alianza_Rebelde.webp';
 const Home = () => {
 
 return(
-    <p>Home</p>
+    <div className="welc-container">
+        <img src={WelcomeLogo} alt="" />
+        <h1>Bienvenidos!!!</h1>
+    </div>
 )
 
 }

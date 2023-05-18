@@ -1,0 +1,56 @@
+header{
+    background-color: #F2F2F2;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+header h1{
+    margin: 0;
+}
+header.dark-theme h1{
+    margin: 0;
+}
+header.dark-theme{
+    color: white;
+    background-color: #333;
+}
+.theme-button-container{
+    text-align: right;
+    padding: 15px;
+}
+.theme-button-container button .material-icons{
+    color: #333;
+}
+.theme-button-container.dark-theme button .material-icons{
+    color: white;
+}
+
+.theme-button-container button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.title{
+    text-transform: uppercase;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+nav ul{
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    gap: 30px;
+}
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+}
+nav ul li a:hover{
+    text-decoration: underline;
+}

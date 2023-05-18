@@ -1,4 +1,7 @@
 import { useState,useContext } from "react"
+
+import { Link } from "react-router-dom";
+
 import LightContext from "../../contexts/LightContext";
 
 const FormNewContact = ({dataContacts}) => {
@@ -9,8 +12,9 @@ const FormNewContact = ({dataContacts}) => {
 
     const dataLight = useContext(LightContext)
 
-    const addContact = () =>
-    dataContacts.setContacts([...dataContacts.contacts, { name, email, phone }])
+    const addContact = () => {
+        dataContacts.setContacts([...dataContacts.contacts, { name, email, phone }])
+    }
 
     const handlerName = event => setName(event.target.value)
     const handlerEmail = event => setEmail(event.target.value)
@@ -18,7 +22,7 @@ const FormNewContact = ({dataContacts}) => {
 
 
     return(
-        <div className={dataLight}>
+        <div className="formulario">
             <h2>Nuevo contacto</h2>
             <div className="form">
                 <div>
@@ -27,6 +31,9 @@ const FormNewContact = ({dataContacts}) => {
                     <p>Teléfono: <input type="text" onChange={handlerPhone} /></p>
                 </div>
                 <button onClick={addContact}>Añadir nuevo</button>
+            </div>
+            <div className="text-center">
+                <Link to='/contact'>Volver</Link>
             </div>
         </div>
     )

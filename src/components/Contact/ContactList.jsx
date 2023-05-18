@@ -1,6 +1,8 @@
 import { useState } from "react";
 import ContactCard from "./ContactCard"
 
+import { Link } from "react-router-dom";
+
 import { useContext } from "react";
 
 import AddContactsContext from '../../contexts/AddContactsContext'
@@ -25,6 +27,7 @@ const ContactList = () => {
             <h2>Contactos</h2>
             <div className="search-bar">
                 <input placeholder="Introduce los términos de búsqueda" onChange={handleChange} />
+                <Link to="/new">Nuevo</Link>
             </div>
             <ul className="list list--cards">
                 {

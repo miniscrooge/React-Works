@@ -1,4 +1,7 @@
 import { useContext } from "react";
+
+import { Link } from "react-router-dom";
+
 import LightContext from '../../contexts/LightContext';
 import AddContactsContext from '../../contexts/AddContactsContext';
 
@@ -13,6 +16,7 @@ const ContactCard = ({contact}) => {
                             .filter(contact => contact.name !== name)
                             .map(person => { //recorro array datos de API y devuelvo los campos que me ineteresan
                                 return {
+                                  id: person.id,
                                   name: person.name,
                                   email: person.email,
                                   phone: person.phone 
@@ -31,6 +35,7 @@ const ContactCard = ({contact}) => {
                 <p className="card__ctas">
                     {/* <button>Ver más</button>
                     <button>Editar</button> */}
+                    <Link to={"/contact/" + contact.id}>Ver detalle</Link>
                     <button onClick={() => removeContact(contact.name)}>Borrar</button>
                 </p>
             </div>

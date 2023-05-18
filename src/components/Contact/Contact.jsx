@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import useFetch from "../../hooks/useFetch"
 
-import '../../assets/contact.css'
+import '../../assets/contact.scss'
 
 
 import ContactList from "./ContactList"
@@ -35,22 +35,16 @@ const Contact = () => {
     return(
       <LightContext.Provider value={theme}>
         <main className={theme}>
-          <header className={theme}>
-            <h1>React Works</h1>
-            <button onClick={toogleTheme}>
-              <span className="material-icons">{toogleCopyIcon}</span>
-            </button>
-          </header>
+            {/* <div className={"theme-button-container " + theme}>
+              <button onClick={toogleTheme}>
+                <span className="material-icons">{toogleCopyIcon}</span>
+              </button>
+            </div> */}
+          
           <div className="contacto-general">
               <div className="contacto-general__block">
                 {/* Pasando datos por Context */}
-                <AddContactssContext.Provider value={{contacts,setContacts,loadingContacts, errorContacts}}>
                   <ContactList/>
-                </AddContactssContext.Provider>
-              </div>
-              <div className="contacto-general__block contacto-general__search">
-                  {/* Pasando datos por prop */}
-                  <FormNewContact dataContacts={{contacts, setContacts}}/>
               </div>
           </div>
         </main>
