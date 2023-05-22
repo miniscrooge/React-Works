@@ -5,7 +5,7 @@ import AddContactsContext from '../../contexts/AddContactsContext';
 
 const ContactDetail = () =>{
     const{id} = useParams()
-    const {contacts, loadingContacts, errorContacts} = useContext(AddContactsContext)
+    const {contacts} = useContext(AddContactsContext)
     console.log(contacts)
 
     return(
